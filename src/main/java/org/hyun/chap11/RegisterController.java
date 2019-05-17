@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * 회원가입 컨트롤러
  * 
- * @author 
+ * @author Jacob
  */
 @Controller
 public class RegisterController {
