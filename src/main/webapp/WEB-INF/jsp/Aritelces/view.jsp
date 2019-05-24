@@ -13,7 +13,7 @@
 				<c:if test="${!empty sessionScope.ARTICLEID }">
 		<p style="color: red;">본인 글이 아닙니다..</p>
 	          </c:if>
-				<span><a href="./app/update.jsp">수정</a></span> | 
+				<span><a href="./app/Aritelces/update.jsp">수정</a></span> | 
 				<span><a href="./app/delete.jsp">삭제</a></span> 
 			</c:when>
 			<c:otherwise>
