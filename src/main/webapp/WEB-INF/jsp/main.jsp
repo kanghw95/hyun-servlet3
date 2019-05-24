@@ -6,7 +6,7 @@
 <title>메인</title>
 </head>
 <body>
-<p>환영합니다.</p>
+<p>스프링웹</p>
 	<!-- 로그인 여부에 따라 분기 -->
 	<c:choose>
 		<c:when test="${!empty sessionScope.MEMBER }">
@@ -27,11 +27,14 @@
 			</p>
 		</c:otherwise>
 </c:choose>
+<p>
+		<a href="./app/members">[회원 목록]</a>
+</p>
 	<p>
 		<a href="./app/Aritelces/addform">[글쓰기]</a>
 	</p>
 	<p>
-		<a href="./app/Articles">[회원 목록]</a>
+		<a href="./app/Articles">[글 목록]</a>
 	</p>
 </body>
 </head>

@@ -19,6 +19,7 @@ public class MemberDao {
 
 	static final String SELECT_BY_LOGIN = "SELECT memberId, email, password, name FROM member WHERE (email,password) = (?,sha2(?,256))";
 
+	static final String CHANGE_PASSWORD = "UPDATE member SET password=sha2(?,256) WHERE (memberId, password)=(?, sha2(?,256))";
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
@@ -54,4 +55,9 @@ public class MemberDao {
 		return jdbcTemplate.queryForObject(SELECT_BY_LOGIN, memberRowMapper,
 				email, password);
 	}
+	public int changePassword(String memberId, String currentPassword,
+			String newPassword) {
+		return jdbcTemplate.update(CHANGE_PASSWORD, newPassword, memberId,
+				currentPassword);
+}
 }

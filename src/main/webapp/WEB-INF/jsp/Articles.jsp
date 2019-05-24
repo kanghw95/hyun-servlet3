@@ -6,6 +6,7 @@
 <title>글목록</title>
 </head>
 <body>
+<%@ include file="/WEB-INF/jsp/header.jsp"%>
 	<p>전체${totalCount}건</p>
 	<form action="./app/Articles">
 		<input type="number" name="page" value="${param.page }" placeholder="페이지"

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 
 @Controller
@@ -59,30 +60,19 @@ public class ArticleController {
 	
 	@RequestMapping("/Aritelces/addform")
 	public String handleStep2(HttpSession session)
-	{   Object memberObj = session.getAttribute("MEMBER");
-	  if (memberObj == null)
-      return "redirect:/app/loginForm";
-		return "Aritelces/addform";
+	{ 
+     return "Aritelces/addform";
 	}
 	
 	
 	@PostMapping("/Aritelces/good")
-	public String handleStep3(Article article, HttpSession session)
+	public String handleStep3(Article article, @SessionAttribute("MEMBER") Member member)
 	{
-		Object memberObj = session.getAttribute("MEMBER");
-		if (memberObj == null)
-				return "redirect:/app/login/loginForm";
-		Member member = (Member) memberObj;
-		article.setUserId(member.getMemberId());    
+	  article.setUserId(member.getMemberId());    
       article.setName(member.getName()); 
-      
-		try {
-			ArticleDao.insert(article);
-			logger.debug("회원 정보를 저장 {}", article);
-			return "Aritelces/good";
-		} catch (DuplicateKeyException e) {
-			return "Aritelces/addform";
-		}
+      ArticleDao.addArticle(article);
+      return "redirect:/app/Articles/view";
+		
 	}
 	
 }
