@@ -11,13 +11,16 @@
 	<form action="./app/Articles">
 		<input type="number" name="page" value="${param.page }" placeholder="페이지"
 			min="1" max="${totalCount / 100 + 1 }" step="1" style="width: 70px;">
+	<p>
+		<a href="./app/Aritelces/addform">[글쓰기]</a>
+	</p>
 		<button type="submit">조회</button>
 	</form>
 	<table>
 		<thead>
 			<tr>
 			    <td>글번호</td>
-				<td>학번</td>
+				<td>회원번호</td>
 				<td>제목</td>
 				<td>이름</td>
 				<td>글내용</td>

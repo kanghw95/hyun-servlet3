@@ -11,8 +11,7 @@
 	<c:choose>
 		<c:when test="${!empty sessionScope.MEMBER }">
 			<!-- 로그인 했을 경우 -->
-			<p>memberId: ${MEMBER.memberId }, email: ${MEMBER.email }, name:
-				${MEMBER.name }</p>
+			<p>memberId: ${MEMBER.memberId }, email: ${MEMBER.email }, name:${MEMBER.name }</p>
 			<p>
 				<a href="./app/logout">[로그아웃]</a>
 			</p>

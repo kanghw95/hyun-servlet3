@@ -14,13 +14,14 @@ public class ArticleDaoImplUsingSpringJdbc implements ArticleDao{
 	
 	
 	
-	static final String INSERT = "INSERT article(title,content,userId,name) VALUES(?, ?, ?, ?);";
-	static final String GET_ARTICLE = "SELECT articleId, title, content, name, udate, udate FROM article WHERE articleId=?";
+	static final String INSERT_ARTICLE= "insert article(title,content,userId,name) VALUES(?, ?, ?, ?);";
+	static final String GET_ARTICLE = "SELECT articleId, userId, title, content, name, udate, udate FROM article WHERE articleId=?";
 	static final String SELECT_ALL = "SELECT articleId, title, content, userId, name, left(cdate,19) cdate FROM article ORDER BY articleId desc LIMIT ?,?";
 	static final String COUNT_ALL = "SELECT count(articleId) count FROM article";
 	static final String ADD_ARTICLE = "insert article(title,content,userId,name) values(?,?,?,?)";
 	static final String UP_ARTICLE = "update article set title=?, content=? where articleId = ?";
 	static final String DELETE_ARTICLE = "delete from article where articleId = ?";
+	private static final String INSERT = null;
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
@@ -37,8 +38,8 @@ public class ArticleDaoImplUsingSpringJdbc implements ArticleDao{
 				new BeanPropertyRowMapper<>(Article.class), articleId );
 	}
 	@Override
-	public void insert(Article article) {
-		jdbcTemplate.update(INSERT, article.getTitle(), article.getContent(), "2014041094", "강현우");
+	public void insertArticle(Article article) {
+		jdbcTemplate.update(INSERT, article.getTitle(), article.getContent(), article.getUserId(),article.getName());
 	}
 
 	@Override

@@ -81,9 +81,10 @@ public class ArticleController {
 		Article article = ArticleDao.getArticle(articleId);
 		if(!member.getMemberId().equals(article.getUserId()))
 			return "redirect:/app/Aritelces/view?articleId="+articleId;
-		model.addAttribute("article",article);
-return "Aritelces/updp";
+			model.addAttribute("article",article);
+			return "Aritelces/updp";
 }
+
 	
 	@PostMapping("/Aritelces/upArticle")
 	public String upArticle(Article article,
@@ -99,7 +100,12 @@ return "Aritelces/updp";
 }
 	@GetMapping("/Aritelces/deleteArticle")
 	public String deleteArticle(@RequestParam(value = "articleId") String articleId,
-			Model model)  {
+			@SessionAttribute("MEMBER") Member member
+			,Model model)  {
+		
+		Article article = ArticleDao.getArticle(articleId);
+		if(!member.getMemberId().equals(article.getUserId()))
+		return "redirect:/app/Aritelces/view?articleId="+articleId;
 		try {
 			ArticleDao.deleteArticle(articleId);
 		} catch (DuplicateKeyException e) {

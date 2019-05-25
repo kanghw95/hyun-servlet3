@@ -17,7 +17,7 @@ public interface ArticleDao {
     List<Article> selectAll(int offset, int COUNT);
 		
 
-	void insert(Article article);
+	void insertArticle(Article article);
 
 
 	void addArticle(Article article);
