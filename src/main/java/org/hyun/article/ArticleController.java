@@ -81,9 +81,8 @@ public class ArticleController {
 		Article article = ArticleDao.getArticle(articleId);
 		if(!member.getMemberId().equals(article.getUserId()))
 			return "redirect:/app/Aritelces/view?articleId="+articleId;
-			//return "forward:/app/article/articles";
-		model.addAttribute("ARTICLE",article);
-return "article/updp";
+		model.addAttribute("article",article);
+return "Aritelces/updp";
 }
 	
 	@PostMapping("/Aritelces/upArticle")
