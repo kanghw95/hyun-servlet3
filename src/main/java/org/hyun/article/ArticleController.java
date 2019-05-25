@@ -73,22 +73,39 @@ public class ArticleController {
 		ArticleDao.addArticle(article);
 		return "redirect:/app/Articles";
 }
-	@PostMapping("/Aritelces/update")
-	public String updateAritcle(Article article,@SessionAttribute("MEMBER") Member member) 
-{
-		article.setUserId(member.getMemberId());
-		article.setName(member.getName());
-		ArticleDao.addArticle(article);
-		return "redirect:/app/Articles";
+	@GetMapping("/Aritelces/updp")
+	public String updp(@RequestParam(value = "articleId") String articleId,
+			@SessionAttribute("MEMBER") Member member
+			,Model model)
+	{
+		Article article = ArticleDao.getArticle(articleId);
+		if(!member.getMemberId().equals(article.getUserId()))
+			return "redirect:/app/Aritelces/view?articleId="+articleId;
+			//return "forward:/app/article/articles";
+		model.addAttribute("ARTICLE",article);
+return "article/updp";
 }
-	@GetMapping("/Aritelces/delete")
+	
+	@PostMapping("/Aritelces/upArticle")
+	public String upArticle(Article article,
+			@RequestParam(value="articleId") String articleId, @SessionAttribute("MEMBER") Member member) 
+{
+		article.setArticleId(articleId);
+		try {
+			ArticleDao.upArticle(article);
+			return "redirect:/app/Aritelces/view?articleId="+articleId;
+		} catch (DuplicateKeyException e) {
+			return "redirect:/app/Articles";
+		}
+}
+	@GetMapping("/Aritelces/deleteArticle")
 	public String deleteArticle(@RequestParam(value = "articleId") String articleId,
 			Model model)  {
-	    Article article = ArticleDao.getArticle(articleId);
-	    
-	    model.addAttribute("article", article);
-		
-		return "Aritelces/view";
+		try {
+			ArticleDao.deleteArticle(articleId);
+		} catch (DuplicateKeyException e) {
+		}
+return "redirect:/app/Articles";
 	}
 
 	

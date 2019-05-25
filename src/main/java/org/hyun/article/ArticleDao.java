@@ -22,8 +22,8 @@ public interface ArticleDao {
 
 	void addArticle(Article article);
 	
-	void updateArticle(Article article);
+	void upArticle(Article article);
 	
-	void deleteArticle(Article article);
+	void deleteArticle(String articleId);
 
 }
