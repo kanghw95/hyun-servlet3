@@ -5,6 +5,14 @@
 <head>
 <base href="${pageContext.request.contextPath}/" />
 <title>게시글 조회</title>
+<script type="text/javascript">
+	function confirmDelete() {
+		if (confirm("삭제하시겠습니까?"))
+			return true;
+		else
+			return false;
+	}
+</script>
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 </head>
 	<table>
@@ -18,18 +26,11 @@
 		</thead>
 	</table>
 			<!-- 로그인 여부에 따라 분기 -->
-		<c:choose>
-			<c:when test="${!empty sessionScope.MEMBER }">
-				<!-- 로그인 했을 경우 -->
+				<c:if test="${article.userId == sessionScope.MEMBER.memberId }">
 				<span><a href="./app/Aritelces/updp?articleId=${article.articleId}">수정하기</a></span> | 
-				<span><a href="./app/Aritelces/deleteArticle?articleId=${article.articleId}">삭제하기</a></span> 
-			</c:when>
-			<c:otherwise>
-				<!-- 로그인 하지 않았을 경우 -->
-				<span><a href="./app/loginForm">로그인</a></span> |
-				<span><a href="./app/register/step1">회원가입</a></span>
-			</c:otherwise>
-</c:choose>
+				<span><a href="./app/Aritelces/deleteArticle?articleId=${article.articleId}"
+								onclick="return confirmDelete();">삭제하기</a></span> 
+				</c:if>
 <p>
 		<a href="./app/Articles">글목록</a>
 </p>

@@ -21,6 +21,12 @@ public class ArticleDaoImplUsingSpringJdbc implements ArticleDao{
 	static final String ADD_ARTICLE = "insert article(title,content,userId,name) values(?,?,?,?)";
 	static final String UP_ARTICLE = "update article set title=?, content=? where articleId = ?";
 	static final String DELETE_ARTICLE = "delete from article where articleId = ?";
+	
+	//static final String UPDATE_ARTICLE = "update article set title=?, content=? where (articleId, userId) = (?,?)";
+
+	//static final String DELETE_ARTICLE = "delete from article where (articleId, userId) = (?,?)";
+	//교수님꺼
+
 	private static final String INSERT = null;
 	@Autowired
 	JdbcTemplate jdbcTemplate;
@@ -60,7 +66,24 @@ public class ArticleDaoImplUsingSpringJdbc implements ArticleDao{
 		jdbcTemplate.update(DELETE_ARTICLE,articleId);
 		
 }
-	
-	
-	
+	//교수님꺼
+	/**
+	 * 글 수정
+	 */
+	/*public int updateArticle(Article article) {
+		return jdbcTemplate.update(UPDATE_ARTICLE, article.getTitle(),
+				article.getContent(), article.getArticleId(),
+				article.getUserId());
+	}*/
+
+	/**
+	 * 글 삭제
+	 */
+	/*
+	public int deleteArticle(String articleId, String userId) {
+		return jdbcTemplate.update(DELETE_ARTICLE, articleId, userId);
+		*/
 }
+	
+	
+	
