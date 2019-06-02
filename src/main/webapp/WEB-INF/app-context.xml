@@ -23,6 +23,7 @@
 			<mvc:mapping path="/Aritelces/updp*" />
 			<mvc:mapping path="/Aritelces/add*" />
 			<mvc:mapping path="/Aritelces/delete" />
+			<mvc:mapping path="/letter/**" />
 			<bean class="org.hyun.chap13.AuthCheckInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

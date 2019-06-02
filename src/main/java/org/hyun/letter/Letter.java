@@ -1,20 +1,22 @@
 package org.hyun.letter;
 
 public class Letter {
-	String letterId; 
+
+	String letterId;
 	String title;
 	String content;
 	String senderId;
-	String senderName; 
+	String senderName;
 	String receiverId;
 	String receiverName;
 	String cdate;
-	
-	public String getletterId() {
+	String ContentHtml;
+
+	public String getLetterId() {
 		return letterId;
 	}
 
-	public void setletterId(String letterId) {
+	public void setLetterId(String letterId) {
 		this.letterId = letterId;
 	}
 
@@ -34,35 +36,35 @@ public class Letter {
 		this.content = content;
 	}
 
-	public String getsenderId() {
+	public String getSenderId() {
 		return senderId;
 	}
 
-	public void setsenderId(String senderId) {
+	public void setSenderId(String senderId) {
 		this.senderId = senderId;
 	}
 
-	public String getsenderName() {
+	public String getSenderName() {
 		return senderName;
 	}
 
-	public void setsenderName(String senderName) {
+	public void setSenderName(String senderName) {
 		this.senderName = senderName;
 	}
-	
-	public String getreceiverId() {
+
+	public String getReceiverId() {
 		return receiverId;
 	}
 
-	public void setreceiverId(String receiverId) {
+	public void setReceiverId(String receiverId) {
 		this.receiverId = receiverId;
 	}
 
-	public String getreceiverName() {
+	public String getReceiverName() {
 		return receiverName;
 	}
 
-	public void setreceiverName(String receiverName) {
+	public void setReceiverName(String receiverName) {
 		this.receiverName = receiverName;
 	}
 
@@ -73,18 +75,18 @@ public class Letter {
 	public void setCdate(String cdate) {
 		this.cdate = cdate;
 	}
-	
-
-public String getContentHtml() {
-	if(content !=null)
-		return content.replace("\n", "<br/>");
-	return null;
-	
-}
+	public String getContentHtml() {
+		if(content !=null)
+			return content.replace("\n", "<br/>");
+		return null;
+		
+	}
 	@Override
 	public String toString() {
-		return "Article [letterId=" + letterId + ", title=" + title
-				+ ", content=" + content + ", senderId=" + senderId + ", senderName="
-				+ senderName + ", cdate=" + cdate + "]";
+		return "Letter [letterId=" + letterId + ", title=" + title
+				+ ", content=" + content + ", senderId=" + senderId
+				+ ", senderName=" + senderName + ", receiverId=" + receiverId
+				+ ", receiverName=" + receiverName + ", cdate=" + cdate + "]";
 	}
+
 }

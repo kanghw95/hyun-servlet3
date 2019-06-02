@@ -14,7 +14,7 @@ public class ArticleDaoImplUsingSpringJdbc implements ArticleDao{
 	
 	
 	
-	static final String INSERT_ARTICLE= "insert article(title,content,userId,name) VALUES(?, ?, ?, ?);";
+	static final String INSERT_ARTICLE= "insert article(title,content,userId,name) VALUES(?, ?, ?, ?)";
 	static final String GET_ARTICLE = "SELECT articleId, userId, title, content, name, udate, udate FROM article WHERE articleId=?";
 	static final String SELECT_ALL = "SELECT articleId, title, content, userId, name, left(cdate,19) cdate FROM article ORDER BY articleId desc LIMIT ?,?";
 	static final String COUNT_ALL = "SELECT count(articleId) count FROM article";
