@@ -72,13 +72,19 @@ public class LetterController {
 	 * 편지 삭제
 	 */
 	@GetMapping("/letter/delete")
-	public String delete(@RequestParam("letterId") String letterId,
+	public String delete(
+			@RequestParam(value = "mode", required = false) String mode,
+			@RequestParam("letterId") String letterId,
 			@SessionAttribute("MEMBER") Member member) {
 		int updatedRows = letterDao.deleteLetter(letterId,
 				member.getMemberId());
 		if (updatedRows == 0)
+			// 자신의 편지가 아닐 경우 삭제되지 않음
 			throw new RuntimeException("No Authority!");
 
-		return "redirect:/보낸목록 또는 받은목록";
-	}
+		if ("SENT".equals(mode))
+			return "redirect:/app/letter/listOfSender";
+		else
+			return "redirect:/app/letter/listOfReceiver";
+}
 }

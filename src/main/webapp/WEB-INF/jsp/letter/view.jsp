@@ -26,7 +26,7 @@
 		</tbody>
 	</table>
 				<c:if test="${LETTER.senderId==sessionScope.MEMBER.memberId || LETTER.receiverId==sessionScope.MEMBER.memberId}">
-				<span><a href="./app/letter/delete?letterId=${LETTER.letterId}"onclick="return confirmDelete();">삭제하기</a></span> | 
+				<span><a href="./app/letter/delete?letterId=${LETTER.letterId}&mode=${param.mode}"onclick="return confirmDelete();">삭제하기</a></span> | 
 				</c:if>
 		<p>
 			<button type="submit" onclick="history.back()">돌아가기</button>

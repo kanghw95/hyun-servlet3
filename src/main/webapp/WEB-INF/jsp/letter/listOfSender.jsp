@@ -36,7 +36,7 @@ th {
 			<c:forEach var="LETTER" items="${listOfSender}">
 				<tr>
 				     	<td>${LETTER.letterId}</td>
-						<td><a href="./app/letter/view?letterId=${LETTER.letterId}">${LETTER.title}</a></td>
+						<td><a href="./app/letter/view?letterId=${LETTER.letterId}&mode=SENT">${LETTER.title}</a></td>
 						<td>${LETTER.senderName}</td>
 						<td>${LETTER.receiverName}</td>
 						<td>${LETTER.cdate}</td>
