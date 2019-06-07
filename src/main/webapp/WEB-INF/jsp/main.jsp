@@ -6,7 +6,7 @@
 <title>메인</title>
 </head>
 <body>
-<p>스프링웹</p>
+<h2>환영한다 월켐투 스프링웹</h2>
 	<!-- 로그인 여부에 따라 분기 -->
 	<c:choose>
 		<c:when test="${!empty sessionScope.MEMBER }">
